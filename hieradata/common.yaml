@@ -1,0 +1,9 @@
+galera_servers_array : 
+  - '172.17.0.2' 
+  - '172.17.0.3'
+
+galera_servers_hash  : 
+  {'node1' : { ip : "172.17.0.2", port : "3306"}, 
+   'node2' : { ip : "172.17.0.3", port : "3306"}}
+
+galera_group   : "test_cluster"

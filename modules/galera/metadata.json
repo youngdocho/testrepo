@@ -1,0 +1,61 @@
+{
+  "name": "michaeltchapman-galera",
+  "version": "0.6.0",
+  "author": "Michael Chapman",
+  "summary": "Install/configure MySQL with Galera",
+  "license": "Apache-2.0",
+  "source": "https://github.com/michaeltchapman/puppet-galera",
+  "project_page": "https://github.com/michaeltchapman/puppet-galera",
+  "issues_url": "https://github.com/michaeltchapman/puppet-galera/issues",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.1.0"},
+    {"name":"puppetlabs/apt","version_requirement":">= 2.0.0 < 3.0.0"},
+    {"name":"puppetlabs/mysql","version_requirement":">=3.8.0"},
+    {"name":"puppetlabs/firewall","version_requirement":">=1.0.0"},
+    {"name":"puppetlabs/xinetd","version_requirement":">=1.3.0"}
+  ],
+  "data_provider": null,
+  "description": "Install/configure MySQL with Galera",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian"
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6.0",
+        "7.0"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6.0",
+        "7.0"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific"
+    },
+    {
+      "operatingsystem": "OracleLinux"
+    }
+  ],
+  "requirements": [
+  
+  ],
+  "tags": [
+    "mysql",
+    "percona",
+    "mariadb",
+    "galera",
+    "database"
+  ]
+}
