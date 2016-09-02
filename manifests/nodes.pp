@@ -26,7 +26,7 @@ node /node.*/{
   }
 }
 
-node 'garb'{
+node /garb.*/{
   include garb
   class {'garb': 
     galera_servers  => hiera('galera_servers_array'),
