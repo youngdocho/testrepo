@@ -1,7 +1,6 @@
 #!/bin/bash
 cd /puppet
-git add testrepo/hieradata/common.yaml
-git add testrepo/puppet.sh
+git fetch master
 git pull https://github.com/youngdocho/testrepo.git
 chmod 700 testrepo/puppet.sh
 
