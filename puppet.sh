@@ -1,8 +1,9 @@
 #!/bin/bash
-cd /puppet/testrepo
-git add .
-git pull
-chmod 700 puppet.sh
+cd /puppet
+git add testrepo/hieradata/common.yaml
+git add testrepo/puppet.sh
+git pull https://github.com/youngdocho/testrepo.git
+chmod 700 testrepo/puppet.sh
 
 cp -r /puppet/testrepo/modules/* /etc/puppet/modules
 ln -s /puppet/testrepo/ /etc/puppet/modules/galera/
