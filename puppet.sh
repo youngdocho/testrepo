@@ -1,7 +1,9 @@
 #!/bin/bash
 cd /puppet
-git fetch master
-git pull https://github.com/youngdocho/testrepo.git
+git fetch -all 
+git reset --hard origin/master
+git pull origin master
+#git pull https://github.com/youngdocho/testrepo.git
 chmod 700 testrepo/puppet.sh
 
 cp -r /puppet/testrepo/modules/* /etc/puppet/modules
