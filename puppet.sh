@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /puppet
-git fetch -all 
+git fetch --all 
 git reset --hard origin/master
 git pull origin master
 #git pull https://github.com/youngdocho/testrepo.git
