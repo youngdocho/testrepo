@@ -1,12 +1,8 @@
 galera_servers_array: 
-  - '172.17.0.7'
   - '172.17.0.4'
   - '172.17.0.5'
-  - '172.17.0.6'
 galera_servers_hash: {
-  'node4' : { ip: "172.17.0.7", port: "3306"}, 
   'node1' : { ip: "172.17.0.4", port: "3306"}, 
   'node2' : { ip: "172.17.0.5", port: "3306"}, 
-  'node3' : { ip: "172.17.0.6", port: "3306"}, 
 }
 galera_group : "test_cluster"
