@@ -1,17 +1,5 @@
 node /node.*/{
-
-  #include test
-  #class {'test':
-  #}
-  #exec { 'copy-folder':
-  #  command => '/bin/cp -r /vagrant/puppet/modules/* /etc/puppet/modules', 
-  #}
   
-  #exec { 'link-folder':
-  #  command => '/bin/ln -s /vagrant/puppet/ /etc/puppet/modules/galera',
-  #  require => Exec['copy-folder'],
-  #}
-
   class { 'galera':
     galera_servers     => hiera('galera_servers_array'),
     wsrep_cluster_name => hiera('galera_group'),
@@ -26,8 +14,7 @@ node /node.*/{
   }
 }
 
-node /arb.*/{
-  include garb
+node /garb.*/{
   class {'garb': 
     galera_servers  => hiera('galera_servers_array'),
     galera_group    => hiera('galera_group'),
