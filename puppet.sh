@@ -1,9 +1,8 @@
 #!/bin/bash
-mkdir /puppet
-cd /puppet
-git init
-git clone https://github.com/youngdocho/testrepo.git
-chmod 700 ./puppet/testrepo/puppet.sh
+cd /puppet/testrepo
+git add .
+git pull
+chmod 700 puppet.sh
 
 cp -r /puppet/testrepo/modules/* /etc/puppet/modules
 ln -s /puppet/testrepo/ /etc/puppet/modules/galera/
