@@ -1,5 +1,12 @@
 #!/bin/bash
 PUPPETDIR=/puppet/testrepo
 cd ${PUPPETDIR}
-git pull 
-puppet apply /puppet/testrepo/manifests/nodes.pp --hiera_config=/puppet/testrepo/hiera.yaml
+git remote update
+if git status -uno | grep -q -v 'Already up-to-date.'; then
+   echo "Alreay up-to-date"
+else
+   git fetch --all
+   git reset --hard origin/master
+   git pull origin master
+   puppet apply /puppet/testrepo/manifests/nodes.pp --hiera_config=/puppet/testrepo/hiera.yaml
+fi
