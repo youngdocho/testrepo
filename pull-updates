@@ -1,5 +1,5 @@
 #!/bin/bash
 PUPPETDIR=/puppet/testrepo
 cd ${PUPPETDIR}
-git pull
+git pull 
 puppet apply /puppet/testrepo/manifests/nodes.pp --hiera_config=/puppet/testrepo/hiera.yaml
