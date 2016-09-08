@@ -1,6 +1,8 @@
 galera_servers_array: 
   - ''
+  - ''
 galera_servers_hash: {
   'node1' : { ip: "", port: "3306"}, 
+  'node2' : { ip: "", port: "3306"}, 
 }
 galera_group : "test_cluster"
