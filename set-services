@@ -3,7 +3,7 @@ cd /puppet/testrepo
 git fetch --all 
 git reset --hard origin/master
 git pull origin master
-chmod 700 run-puppet
+chmod 700 set-services
 
 cp -r /puppet/testrepo/modules/* /etc/puppet/modules
 ln -s /puppet/testrepo/ /etc/puppet/modules/galera/
