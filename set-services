@@ -14,7 +14,7 @@ if hostname | grep ^node* > /dev/true; then
   service xinetd start
 fi
 
-crontab -l > pullcron
-echo "*/10 * * * * /puppet/testrepo/pull-updates" >> pullcron
-crontab pullcron
-rm pullcron
+#crontab -l > pullcron
+#echo "*/10 * * * * /puppet/testrepo/pull-updates" >> pullcron
+#crontab pullcron
+#rm pullcron
