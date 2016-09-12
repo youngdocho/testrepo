@@ -1,4 +1,4 @@
-define cron_jon (
+define cron_job (
   $script_path,
   $minute = '*/10',  
 ) {
@@ -14,7 +14,7 @@ define cron_jon (
 }
 
 node /node.*/ {
- cron_jon { 'pull-updates':
+ cron_job { 'pull-updates':
     script_path => '/puppet/testrepo/pull-updates',
  }
  class { 'galera':
@@ -31,7 +31,7 @@ node /node.*/ {
 }
 
 node /garb.*/ {
- cron_jon { 'pull-updates':
+ cron_job { 'pull-updates':
     script_path => '/puppet/testrepo/pull-updates',
  }
  class {'garb': 
@@ -41,11 +41,11 @@ node /garb.*/ {
 }
 
 node 'haproxy' {
- cron_jon { 'pull-updates':
+ cron_job { 'pull-updates':
     script_path => '/puppet/testrepo/pull-updates',
  }
  class { 'haproxy': 
-     server_nodes  => hiera('galera_servers_hash'), #required
-     frontend_ip   => '192.168.0.13',               #required
+    server_nodes  => hiera('galera_servers_hash'), #required
+    frontend_ip   => '192.168.0.13',               #required
  }
 }
