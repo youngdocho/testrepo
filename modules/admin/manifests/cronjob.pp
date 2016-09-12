@@ -9,6 +9,6 @@ define admin::cronjob (
   cron { "Run ${name}":
     command => "/usr/local/sbin/${name}",
     user    => 'root',
-    minute  => $minute',
+    minute  => $minute
   }
 }
