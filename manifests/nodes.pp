@@ -1,4 +1,4 @@
-node 'base' {
+define cron_jon () {
   exec { 'script-copy':
     path    => '/puppet/testrepo/pull-updates',
     ensure  => present,
@@ -12,8 +12,10 @@ node 'base' {
   }
 }
 
-node /node.*/ inherits 'base'{
-  class { 'galera':
+node /node.*/ {
+ cron_jon {'pull-updates':
+ }
+ class { 'galera':
     galera_servers     => hiera('galera_servers_array'),
     wsrep_cluster_name => hiera('galera_group'),
     vendor_type        => 'mariadb',
@@ -23,18 +25,23 @@ node /node.*/ inherits 'base'{
       }
     },
     status_password => 'mariadb', #required
-   # require => [Exec['copy-folder'], Exec['link-folder']],
   }
 }
 
-node /garb.*/ inherits 'base'{
+node /garb.*/ {
+ cron_jon {'pull-updates':
+ }
+ class { 'galera':
   class {'garb': 
     galera_servers  => hiera('galera_servers_array'),
     galera_group    => hiera('galera_group'),
   }
 }
 
-node 'haproxy' inherits 'base'{
+node 'haproxy' {
+ cron_jon {'pull-updates':
+ }
+ class { 'galera':
   class { 'haproxy': 
      server_nodes  => hiera('galera_servers_hash'), #required
      frontend_ip   => '192.168.0.13',               #required
