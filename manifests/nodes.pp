@@ -1,8 +1,7 @@
 define cron_jon () {
   exec { 'script-copy':
-    path    => '/puppet/testrepo/pull-updates',
-    ensure  => present,
     command => '/bin/cp /puppet/testrepo/pull-updates /usr/local/sbin/pull-updates',    
+    ensure  => present,
   }
   cron { 'pull-updates':
     command => '/usr/local/sbin/pull-updates',
