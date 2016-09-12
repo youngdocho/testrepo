@@ -13,7 +13,7 @@ define cron_jon () {
 }
 
 node /node.*/ {
- cron_jon {'pull-updates':
+ cron_jon { 'pull-updates':
  }
  class { 'galera':
     galera_servers     => hiera('galera_servers_array'),
@@ -29,21 +29,19 @@ node /node.*/ {
 }
 
 node /garb.*/ {
- cron_jon {'pull-updates':
+ cron_jon { 'pull-updates':
  }
- class { 'galera':
-  class {'garb': 
+ class {'garb': 
     galera_servers  => hiera('galera_servers_array'),
     galera_group    => hiera('galera_group'),
-  }
+ }
 }
 
 node 'haproxy' {
- cron_jon {'pull-updates':
+ cron_jon { 'pull-updates':
  }
- class { 'galera':
-  class { 'haproxy': 
+ class { 'haproxy': 
      server_nodes  => hiera('galera_servers_hash'), #required
      frontend_ip   => '192.168.0.13',               #required
-  }
+ }
 }
