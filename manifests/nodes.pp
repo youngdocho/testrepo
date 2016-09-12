@@ -1,18 +1,21 @@
-define cron_jon () {
+define cron_jon (
+  $script_path,
+  $minute = '*/10',  
+) {
   exec { 'script-copy':
-    command => '/bin/cp /puppet/testrepo/pull-updates /usr/local/sbin/pull-updates',    
+    command => "/bin/cp ${script_path} /usr/local/sbin/${name}",    
     ensure  => present,
   }
-  cron { 'pull-updates':
-    command => '/usr/local/sbin/pull-updates',
+  cron { "Run ${name}":
+    command => "/usr/local/sbin/${name}",
     user    => 'root',
-    minute  => '*/10',
-    require => Exec['script-copy'],
+    minute  => $minute',
   }
 }
 
 node /node.*/ {
  cron_jon { 'pull-updates':
+    script_path => '/puppet/testrepo/pull-updates',
  }
  class { 'galera':
     galera_servers     => hiera('galera_servers_array'),
@@ -29,6 +32,7 @@ node /node.*/ {
 
 node /garb.*/ {
  cron_jon { 'pull-updates':
+    script_path => '/puppet/testrepo/pull-updates',
  }
  class {'garb': 
     galera_servers  => hiera('galera_servers_array'),
@@ -38,6 +42,7 @@ node /garb.*/ {
 
 node 'haproxy' {
  cron_jon { 'pull-updates':
+    script_path => '/puppet/testrepo/pull-updates',
  }
  class { 'haproxy': 
      server_nodes  => hiera('galera_servers_hash'), #required
